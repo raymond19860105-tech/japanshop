@@ -81,6 +81,7 @@
       .join-link { display: inline-flex; align-items: center; gap: 7px; }
 
       .icon-button {
+        position: relative;
         display: inline-grid;
         width: 42px;
         height: 42px;
@@ -93,6 +94,24 @@
       }
 
       .icon-button:hover, .nav a:hover, .header-actions a:hover { background: #f3f3f1; }
+      .cart-count {
+        position: absolute;
+        top: 2px;
+        right: 1px;
+        display: none;
+        min-width: 18px;
+        height: 18px;
+        align-items: center;
+        justify-content: center;
+        padding: 0 5px;
+        border-radius: 999px;
+        color: #fff;
+        background: var(--accent);
+        font-size: 11px;
+        font-weight: 900;
+        line-height: 1;
+      }
+      .cart-count.is-visible { display: inline-flex; }
       .mobile-only { display: none; }
 
       .mobile-promo {
@@ -357,6 +376,151 @@
         font-weight: 900;
       }
       .member-status.is-error { color: #b64141; }
+      .cart-section {
+        max-width: var(--max);
+        margin: 72px auto 0;
+        padding: 0 28px 24px;
+      }
+      .cart-section[hidden] { display: none; }
+      .cart-layout {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 330px;
+        gap: 28px;
+        align-items: start;
+      }
+      .cart-list { display: grid; gap: 14px; }
+      .cart-item {
+        display: grid;
+        grid-template-columns: 96px minmax(0, 1fr) auto;
+        gap: 16px;
+        padding: 14px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: #fff;
+      }
+      .cart-item-image {
+        overflow: hidden;
+        aspect-ratio: 1;
+        border-radius: 6px;
+        background: #f0f0ef;
+      }
+      .cart-item-image img { width: 100%; height: 100%; object-fit: cover; }
+      .cart-item h3 { margin-bottom: 8px; font-size: 17px; line-height: 1.35; }
+      .cart-item p { margin-bottom: 10px; color: #555; font-size: 13px; line-height: 1.6; }
+      .cart-tools { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+      .qty-button {
+        display: inline-grid;
+        width: 34px;
+        height: 34px;
+        border: 1px solid var(--line);
+        border-radius: 50%;
+        place-items: center;
+        background: #fff;
+        font-weight: 900;
+        cursor: pointer;
+      }
+      .cart-remove {
+        border: 0;
+        background: transparent;
+        color: #777;
+        font-size: 13px;
+        font-weight: 900;
+        cursor: pointer;
+      }
+      .cart-summary {
+        padding: 22px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: #fafafa;
+      }
+      .cart-summary h3 { margin-bottom: 16px; font-size: 22px; }
+      .cart-total {
+        display: flex;
+        justify-content: space-between;
+        gap: 18px;
+        margin-bottom: 18px;
+        padding-bottom: 18px;
+        border-bottom: 1px solid var(--line);
+        font-weight: 900;
+      }
+      .cart-summary .pill-button { width: 100%; margin-bottom: 10px; }
+      .cart-status { min-height: 20px; color: #1f6a49; font-size: 13px; font-weight: 900; line-height: 1.6; }
+      .cart-status.is-error { color: #b64141; }
+      .checkout-modal {
+        position: fixed;
+        inset: 0;
+        z-index: 60;
+        display: grid;
+        place-items: center;
+        padding: 20px;
+        background: rgba(0,0,0,.38);
+      }
+      .checkout-modal[hidden] { display: none; }
+      .checkout-dialog {
+        width: min(100%, 620px);
+        max-height: min(760px, 92vh);
+        overflow: auto;
+        padding: 24px;
+        border-radius: 8px;
+        background: #fff;
+      }
+      .checkout-head {
+        display: flex;
+        justify-content: space-between;
+        gap: 18px;
+        margin-bottom: 18px;
+      }
+      .checkout-head h2 { margin-bottom: 4px; font-size: 26px; }
+      .checkout-head p { margin-bottom: 0; color: #555; line-height: 1.7; }
+      .checkout-close {
+        width: 40px;
+        height: 40px;
+        border: 0;
+        border-radius: 50%;
+        background: #f3f3f1;
+        font-size: 22px;
+        font-weight: 900;
+        cursor: pointer;
+      }
+      .checkout-options {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 14px;
+      }
+      .checkout-option {
+        min-height: 132px;
+        padding: 18px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: #fff;
+        text-align: left;
+        cursor: pointer;
+      }
+      .checkout-option strong { display: block; margin-bottom: 8px; font-size: 18px; }
+      .checkout-option span { color: #555; font-size: 13px; line-height: 1.7; }
+      .checkout-form {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 14px;
+        margin-top: 18px;
+      }
+      .checkout-form[hidden] { display: none; }
+      .checkout-form label {
+        display: grid;
+        gap: 7px;
+        font-size: 13px;
+        font-weight: 900;
+      }
+      .checkout-form .full { grid-column: 1 / -1; }
+      .checkout-form input,
+      .checkout-form textarea {
+        width: 100%;
+        min-height: 44px;
+        padding: 10px 12px;
+        border: 1px solid #d9d9d4;
+        border-radius: 8px;
+      }
+      .checkout-form textarea { min-height: 88px; resize: vertical; line-height: 1.6; }
       footer { max-width: var(--max); margin: 0 auto; padding: 46px 28px 38px; }
       .footer-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; }
       .footer-col h3 { margin-bottom: 20px; font-size: 16px; }
@@ -391,6 +555,7 @@
         .product-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px 14px; }
         .story-bands { grid-template-columns: 1fr; }
         .member-section { grid-template-columns: 1fr; gap: 24px; }
+        .cart-layout { grid-template-columns: 1fr; }
         .detail-layout { grid-template-columns: 1fr; gap: 34px; }
         .footer-grid { grid-template-columns: repeat(2, 1fr); }
       }
@@ -410,6 +575,10 @@
         .product-card figcaption { font-size: 13px; }
         .story-band { min-height: 230px; padding: 26px; }
         .member-form { grid-template-columns: 1fr; padding: 18px; }
+        .cart-section { padding-right: 18px; padding-left: 18px; }
+        .cart-item { grid-template-columns: 76px minmax(0, 1fr); }
+        .cart-item > strong { grid-column: 1 / -1; }
+        .checkout-options, .checkout-form { grid-template-columns: 1fr; }
         .product-detail h2 { font-size: 27px; }
         .buy-row { grid-template-columns: 50px 50px 1fr; }
         .footer-grid { grid-template-columns: 1fr; }
@@ -435,12 +604,14 @@
         <div class="header-actions desktop-only">
           <a class="join-link" id="desktopPromo" href="#join">🎉 日本現貨與代購上新</a>
           <a href="#member">會員</a>
-          <button class="icon-button" aria-label="購物車" title="購物車">
+          <button class="icon-button" data-cart-button type="button" aria-label="購物車" title="購物車">
             <svg class="icon" viewBox="0 0 24 24"><path d="M6 6h15l-1.8 9H8L6 3H3" /><path d="M8 21a1 1 0 1 0 0-2 1 1 0 0 0 0 2ZM18 21a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z" /></svg>
+            <span class="cart-count" data-cart-count>0</span>
           </button>
         </div>
-        <button class="icon-button mobile-only" aria-label="購物車" title="購物車">
+        <button class="icon-button mobile-only" data-cart-button type="button" aria-label="購物車" title="購物車">
           <svg class="icon" viewBox="0 0 24 24"><path d="M6 6h15l-1.8 9H8L6 3H3" /><path d="M8 21a1 1 0 1 0 0-2 1 1 0 0 0 0 2ZM18 21a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z" /></svg>
+          <span class="cart-count" data-cart-count>0</span>
         </button>
         <a class="mobile-only icon-button" href="#member" aria-label="會員" title="會員">
           <svg class="icon" viewBox="0 0 24 24"><path d="M20 21a8 8 0 0 0-16 0" /><path d="M12 13a5 5 0 1 0 0-10 5 5 0 0 0 0 10Z" /></svg>
@@ -461,6 +632,7 @@
         <a href="#topics">主題</a>
         <a href="#care">代購服務</a>
         <a href="#detail">商品詳情</a>
+        <a href="#cart" data-cart-link>購物車</a>
         <a href="#member">會員專區</a>
       </nav>
     </aside>
@@ -511,6 +683,26 @@
         </div>
         <div class="product-grid" id="recommendedProductsGrid"></div>
         <div class="section-action"><a class="pill-button" href="#recommended">查看所有商品</a></div>
+      </section>
+
+      <section class="cart-section" id="cart" hidden>
+        <div class="section-head">
+          <h2 class="section-title">購物車</h2>
+          <a class="more-link" href="#products">繼續逛 →</a>
+        </div>
+        <div class="cart-layout">
+          <div class="cart-list" id="cartItems"></div>
+          <aside class="cart-summary">
+            <h3>訂單摘要</h3>
+            <div class="cart-total">
+              <span>小計</span>
+              <span id="cartTotal">NT$ 0</span>
+            </div>
+            <button class="pill-button" id="checkoutButton" type="button">前往結帳</button>
+            <button class="pill-button" id="clearCartButton" type="button">清空購物車</button>
+            <div class="cart-status" id="cartStatus"></div>
+          </aside>
+        </div>
       </section>
 
       <section class="member-section" id="member">
@@ -581,7 +773,7 @@
             <div class="buy-row">
               <button class="square-action" aria-label="分享" title="分享"><svg class="icon" viewBox="0 0 24 24"><path d="M4 12v7a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-7" /><path d="m16 6-4-4-4 4M12 2v14" /></svg></button>
               <button class="square-action" aria-label="收藏" title="收藏"><svg class="icon" viewBox="0 0 24 24"><path d="M19 21 12 17 5 21V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2Z" /></svg></button>
-              <button class="buy-button" id="buyButton" type="button"><svg class="icon" viewBox="0 0 24 24"><path d="M6 6h15l-1.8 9H8L6 3H3" /><path d="M8 21a1 1 0 1 0 0-2 1 1 0 0 0 0 2ZM18 21a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z" /></svg><span>購買</span></button>
+              <button class="buy-button" id="buyButton" type="button"><svg class="icon" viewBox="0 0 24 24"><path d="M6 6h15l-1.8 9H8L6 3H3" /><path d="M8 21a1 1 0 1 0 0-2 1 1 0 0 0 0 2ZM18 21a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z" /></svg><span>加入購物車</span></button>
             </div>
             <div class="accordion">
               <button type="button">運送方式 <span>＋</span></button>
@@ -598,6 +790,56 @@
         </div>
       </section>
     </main>
+
+    <div class="checkout-modal" id="checkoutModal" hidden>
+      <div class="checkout-dialog" role="dialog" aria-modal="true" aria-labelledby="checkoutTitle">
+        <div class="checkout-head">
+          <div>
+            <h2 id="checkoutTitle">選擇結帳方式</h2>
+            <p>你可以先加入會員留下代購需求，也可以直接送出本次結帳資料。</p>
+          </div>
+          <button class="checkout-close" id="checkoutCloseButton" type="button" aria-label="關閉">×</button>
+        </div>
+        <div class="checkout-options" id="checkoutOptions">
+          <button class="checkout-option" id="memberCheckoutButton" type="button">
+            <strong>加入會員</strong>
+            <span>留下會員資料與購物清單，後續可接收補貨、代購與出貨通知。</span>
+          </button>
+          <button class="checkout-option" id="directCheckoutButton" type="button">
+            <strong>直接結帳</strong>
+            <span>不先登記會員，直接留下本次收件與聯絡資料。</span>
+          </button>
+        </div>
+        <form class="checkout-form" id="directCheckoutForm" hidden>
+          <label>
+            姓名
+            <input id="checkoutName" type="text" maxlength="40" autocomplete="name" required />
+          </label>
+          <label>
+            Email
+            <input id="checkoutEmail" type="email" maxlength="80" autocomplete="email" required />
+          </label>
+          <label>
+            手機
+            <input id="checkoutPhone" type="tel" maxlength="24" autocomplete="tel" required />
+          </label>
+          <label>
+            Line ID
+            <input id="checkoutLine" type="text" maxlength="40" />
+          </label>
+          <label class="full">
+            收件地址
+            <input id="checkoutAddress" type="text" maxlength="140" autocomplete="street-address" required />
+          </label>
+          <label class="full">
+            備註
+            <textarea id="checkoutNote" maxlength="220"></textarea>
+          </label>
+          <div class="cart-status full" id="checkoutStatus"></div>
+          <button class="pill-button" id="checkoutSubmitButton" type="submit">送出結帳資料</button>
+        </form>
+      </div>
+    </div>
 
     <div class="info-strip">
       <div class="info-strip-inner">
@@ -631,8 +873,12 @@
         hero_image_url: ""
       };
 
+      const CART_KEY = "japanshop-cart";
       let products = [];
       let selectedProductId = null;
+      let cart = readCart();
+      let cartPageOpen = false;
+      let memberCheckoutRequested = false;
       const configured = SUPABASE_URL.startsWith("https://") && SUPABASE_ANON_KEY.length > 30;
       const supabaseLib = window.supabase;
       const client = configured && supabaseLib ? supabaseLib.createClient(SUPABASE_URL, SUPABASE_ANON_KEY) : null;
@@ -643,11 +889,24 @@
       document.getElementById("closeDrawer").addEventListener("click", () => setDrawer(false));
       backdrop.addEventListener("click", () => setDrawer(false));
       drawer.querySelectorAll("a").forEach((link) => link.addEventListener("click", () => setDrawer(false)));
-      document.getElementById("buyButton").addEventListener("click", () => {
-        document.getElementById("buyButton").classList.add("is-added");
-        document.querySelector("#buyButton span").textContent = "已加入購物車";
+      document.querySelectorAll("[data-cart-button]").forEach((button) => button.addEventListener("click", openCartPage));
+      document.querySelectorAll("[data-cart-link]").forEach((link) => link.addEventListener("click", (event) => {
+        event.preventDefault();
+        openCartPage();
+      }));
+      document.getElementById("buyButton").addEventListener("click", addSelectedProductToCart);
+      document.getElementById("cartItems").addEventListener("click", handleCartClick);
+      document.getElementById("checkoutButton").addEventListener("click", openCheckoutModal);
+      document.getElementById("clearCartButton").addEventListener("click", clearCart);
+      document.getElementById("checkoutCloseButton").addEventListener("click", closeCheckoutModal);
+      document.getElementById("checkoutModal").addEventListener("click", (event) => {
+        if (event.target.id === "checkoutModal") closeCheckoutModal();
       });
+      document.getElementById("memberCheckoutButton").addEventListener("click", useMemberCheckout);
+      document.getElementById("directCheckoutButton").addEventListener("click", showDirectCheckoutForm);
+      document.getElementById("directCheckoutForm").addEventListener("submit", submitDirectCheckout);
       document.getElementById("memberForm").addEventListener("submit", submitMemberForm);
+      renderCart();
 
       boot();
 
@@ -777,7 +1036,7 @@
         document.getElementById("detailOffers").innerHTML = (product.offers || []).map((offer) => `<a href="#recommended"><span>＋</span>${escapeHTML(offer)}</a>`).join("");
         renderThumbs(product);
         document.getElementById("buyButton").classList.remove("is-added");
-        document.querySelector("#buyButton span").textContent = "購買";
+        document.querySelector("#buyButton span").textContent = "加入購物車";
       }
 
       function renderThumbs(selected) {
@@ -808,6 +1067,251 @@
         warning.classList.toggle("is-visible", Boolean(message));
       }
 
+      function readCart() {
+        try {
+          return JSON.parse(localStorage.getItem(CART_KEY) || "[]").filter((item) => item && item.id);
+        } catch (_error) {
+          return [];
+        }
+      }
+
+      function saveCart() {
+        localStorage.setItem(CART_KEY, JSON.stringify(cart));
+      }
+
+      function addSelectedProductToCart() {
+        const product = products.find((row) => row.id === selectedProductId) || products[0];
+        if (!product) {
+          setCartStatus("目前沒有可加入購物車的商品。", true);
+          openCartPage();
+          return;
+        }
+        const existing = cart.find((item) => item.id === product.id);
+        if (existing) existing.qty += 1;
+        else {
+          cart.push({
+            id: product.id,
+            name: product.name,
+            price: product.price,
+            image_url: product.image_url || "",
+            category: product.category || "",
+            kind: product.kind || "",
+            sku: product.sku || "",
+            qty: 1
+          });
+        }
+        saveCart();
+        renderCart();
+        document.getElementById("buyButton").classList.add("is-added");
+        document.querySelector("#buyButton span").textContent = "已加入購物車";
+        openCartPage();
+        setCartStatus("商品已加入購物車。");
+      }
+
+      function openCartPage() {
+        cartPageOpen = true;
+        renderCart();
+        document.getElementById("cart").scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+
+      function renderCart() {
+        const totalQty = cart.reduce((sum, item) => sum + Number(item.qty || 0), 0);
+        document.querySelectorAll("[data-cart-count]").forEach((badge) => {
+          badge.textContent = String(totalQty);
+          badge.classList.toggle("is-visible", totalQty > 0);
+        });
+        const cartSection = document.getElementById("cart");
+        cartSection.hidden = !cartPageOpen;
+        const list = document.getElementById("cartItems");
+        const checkoutButton = document.getElementById("checkoutButton");
+        const clearButton = document.getElementById("clearCartButton");
+        checkoutButton.disabled = cart.length === 0;
+        clearButton.disabled = cart.length === 0;
+        document.getElementById("cartTotal").textContent = cartTotalText();
+        if (!cart.length) {
+          list.innerHTML = `<div class="placeholder">購物車目前是空的，先去挑幾樣日本選物吧。</div>`;
+          return;
+        }
+        list.innerHTML = cart.map((item) => `
+          <article class="cart-item" data-cart-id="${escapeHTML(item.id)}">
+            <div class="cart-item-image">${imageOrPlaceholder(item.image_url, item.name)}</div>
+            <div>
+              <h3>${escapeHTML(item.name)}</h3>
+              <p>${escapeHTML([item.category, item.kind, item.sku].filter(Boolean).join(" / "))}</p>
+              <div class="cart-tools">
+                <button class="qty-button" data-cart-action="decrease" type="button" aria-label="減少數量">−</button>
+                <strong>${Number(item.qty || 1)}</strong>
+                <button class="qty-button" data-cart-action="increase" type="button" aria-label="增加數量">＋</button>
+                <button class="cart-remove" data-cart-action="remove" type="button">刪除</button>
+              </div>
+            </div>
+            <strong>${escapeHTML(item.price || "")}</strong>
+          </article>
+        `).join("");
+      }
+
+      function handleCartClick(event) {
+        const action = event.target.dataset.cartAction;
+        const card = event.target.closest("[data-cart-id]");
+        if (!action || !card) return;
+        const item = cart.find((row) => row.id === card.dataset.cartId);
+        if (!item) return;
+        if (action === "increase") item.qty += 1;
+        if (action === "decrease") item.qty -= 1;
+        if (action === "remove" || item.qty <= 0) cart = cart.filter((row) => row.id !== item.id);
+        saveCart();
+        renderCart();
+        setCartStatus(cart.length ? "購物車已更新。" : "購物車已清空。");
+      }
+
+      function clearCart() {
+        if (!cart.length) return;
+        cart = [];
+        saveCart();
+        renderCart();
+        setCartStatus("購物車已清空。");
+      }
+
+      function openCheckoutModal() {
+        if (!cart.length) {
+          setCartStatus("購物車目前是空的。", true);
+          return;
+        }
+        memberCheckoutRequested = false;
+        document.getElementById("checkoutModal").hidden = false;
+        document.getElementById("checkoutOptions").hidden = false;
+        document.getElementById("directCheckoutForm").hidden = true;
+        setCheckoutStatus("");
+      }
+
+      function closeCheckoutModal() {
+        document.getElementById("checkoutModal").hidden = true;
+      }
+
+      function useMemberCheckout() {
+        memberCheckoutRequested = true;
+        const note = document.getElementById("memberNote");
+        const summary = cartSummaryNote();
+        note.value = note.value ? `${note.value}\n\n${summary}` : summary;
+        document.getElementById("memberSubmit").textContent = "建立會員並送出結帳";
+        closeCheckoutModal();
+        document.getElementById("member").scrollIntoView({ behavior: "smooth", block: "start" });
+        setMemberStatus("已把購物車清單帶入備註，請填手機與收件地區，送出後會建立會員與訂單。");
+      }
+
+      function showDirectCheckoutForm() {
+        document.getElementById("checkoutOptions").hidden = true;
+        document.getElementById("directCheckoutForm").hidden = false;
+        document.getElementById("checkoutNote").value = cartSummaryNote();
+        document.getElementById("checkoutName").focus();
+        setCheckoutStatus("");
+      }
+
+      async function submitDirectCheckout(event) {
+        event.preventDefault();
+        if (!configured || !client) {
+          setCheckoutStatus("結帳功能尚未完成連線設定，請稍後再試。", true);
+          return;
+        }
+        if (!cart.length) {
+          setCheckoutStatus("購物車目前是空的。", true);
+          return;
+        }
+        const button = document.getElementById("checkoutSubmitButton");
+        const originalText = button.textContent;
+        const payload = {
+          customer_name: document.getElementById("checkoutName").value.trim(),
+          email: document.getElementById("checkoutEmail").value.trim().toLowerCase(),
+          phone: document.getElementById("checkoutPhone").value.trim(),
+          line_id: document.getElementById("checkoutLine").value.trim(),
+          address: document.getElementById("checkoutAddress").value.trim(),
+          note: document.getElementById("checkoutNote").value.trim(),
+          checkout_mode: "direct",
+          items: cart.map(({ id, name, price, qty, sku }) => ({ id, name, price, qty, sku })),
+          total_amount: cartTotalAmount(),
+          total_text: cartTotalText()
+        };
+        const errors = validateCheckoutPayload(payload);
+        if (errors.length) {
+          setCheckoutStatus(errors.join(" "), true);
+          return;
+        }
+        button.disabled = true;
+        button.textContent = "送出中...";
+        setCheckoutStatus("正在送出結帳資料...");
+        try {
+          const { error } = await client.from("orders").insert(payload);
+          if (error) throw error;
+          cart = [];
+          saveCart();
+          renderCart();
+          event.target.reset();
+          setCheckoutStatus("結帳資料已送出，我們會聯繫你確認付款與出貨。");
+          setCartStatus("結帳資料已送出。");
+        } catch (error) {
+          setCheckoutStatus(`結帳資料送出失敗：${error.message}`, true);
+        } finally {
+          button.disabled = false;
+          button.textContent = originalText;
+        }
+      }
+
+      function validateCheckoutPayload(payload) {
+        const errors = [];
+        if (!payload.customer_name) errors.push("請填姓名。");
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(payload.email)) errors.push("請填正確 Email。");
+        if (!payload.phone) errors.push("請填手機。");
+        if (!payload.address) errors.push("請填收件地址。");
+        if (payload.customer_name.length > 40) errors.push("姓名最多 40 字。");
+        if (payload.email.length > 80) errors.push("Email 最多 80 字。");
+        if (payload.phone.length > 24) errors.push("手機最多 24 字。");
+        if ((payload.line_id || "").length > 40) errors.push("Line ID 最多 40 字。");
+        if (payload.address.length > 140) errors.push("收件地址最多 140 字。");
+        if ((payload.note || "").length > 220) errors.push("備註最多 220 字。");
+        return errors;
+      }
+
+      function cartSummaryText() {
+        if (!cart.length) return "購物車目前是空的。";
+        const lines = cart.map((item) => `・${item.name} x ${item.qty}（${item.price || "價格待確認"}）`);
+        return `購物車清單：\n${lines.join("\n")}\n小計：${cartTotalText()}`;
+      }
+
+      function cartSummaryNote() {
+        const totalQty = cart.reduce((sum, item) => sum + Number(item.qty || 0), 0);
+        const names = cart.map((item) => item.name).slice(0, 3).join("、");
+        const more = cart.length > 3 ? `等 ${cart.length} 項` : "";
+        return `購物車 ${totalQty} 件，小計 ${cartTotalText()}。商品：${names}${more}`;
+      }
+
+      function cartTotalAmount() {
+        return cart.reduce((sum, item) => sum + priceNumber(item.price) * Number(item.qty || 0), 0);
+      }
+
+      function cartTotalText() {
+        return cart.length ? formatCurrency(cartTotalAmount()) : "NT$ 0";
+      }
+
+      function priceNumber(value) {
+        return Number(String(value || "").replace(/[^\d]/g, "")) || 0;
+      }
+
+      function formatCurrency(value) {
+        return `NT$ ${Number(value || 0).toLocaleString("zh-Hant")}`;
+      }
+
+      function setCartStatus(message, isError = false) {
+        const status = document.getElementById("cartStatus");
+        status.textContent = message;
+        status.classList.toggle("is-error", isError);
+      }
+
+      function setCheckoutStatus(message, isError = false) {
+        const status = document.getElementById("checkoutStatus");
+        status.textContent = message;
+        status.classList.toggle("is-error", isError);
+      }
+
       async function submitMemberForm(event) {
         event.preventDefault();
         if (!configured || !client) {
@@ -827,25 +1331,53 @@
           source: "front"
         };
         const errors = validateMemberPayload(payload);
+        const checkoutRequested = memberCheckoutRequested && cart.length;
         if (!document.getElementById("memberConsent").checked) errors.push("請先勾選同意保存會員資料。");
+        if (checkoutRequested) {
+          if (!payload.phone) errors.push("會員結帳請填手機。");
+          if (!payload.address) errors.push("會員結帳請填常用收件地區。");
+        }
         if (errors.length) {
           setMemberStatus(errors.join(" "), true);
           return;
         }
         button.disabled = true;
         button.textContent = "送出中...";
-        setMemberStatus("正在建立會員資料...");
+        setMemberStatus(checkoutRequested ? "正在建立會員與訂單..." : "正在建立會員資料...");
         try {
           const { error } = await client.from("members").insert(payload);
           if (error) throw error;
+          if (checkoutRequested) {
+            const orderPayload = {
+              customer_name: payload.name,
+              email: payload.email,
+              phone: payload.phone,
+              line_id: payload.line_id,
+              address: payload.address,
+              note: payload.note,
+              checkout_mode: "member",
+              items: cart.map(({ id, name, price, qty, sku }) => ({ id, name, price, qty, sku })),
+              total_amount: cartTotalAmount(),
+              total_text: cartTotalText()
+            };
+            const orderErrors = validateCheckoutPayload(orderPayload);
+            if (orderErrors.length) throw new Error(orderErrors.join(" "));
+            const { error: orderError } = await client.from("orders").insert(orderPayload);
+            if (orderError) throw orderError;
+            cart = [];
+            saveCart();
+            renderCart();
+            memberCheckoutRequested = false;
+            setCartStatus("會員結帳資料已送出。");
+          }
           event.target.reset();
-          setMemberStatus("會員資料已送出，我們會依照你留下的聯絡方式通知補貨與代購資訊。");
+          setMemberStatus(checkoutRequested ? "會員資料與結帳資料已送出，我們會聯繫你確認付款與出貨。" : "會員資料已送出，我們會依照你留下的聯絡方式通知補貨與代購資訊。");
         } catch (error) {
           const duplicate = error.code === "23505" || /duplicate|unique/i.test(error.message || "");
-          setMemberStatus(duplicate ? "這個 Email 已經登記過會員。" : `會員資料送出失敗：${error.message}`, true);
+          setMemberStatus(duplicate ? "這個 Email 已經登記過會員，請改用直接結帳或聯繫客服。" : `資料送出失敗：${error.message}`, true);
         } finally {
           button.disabled = false;
-          button.textContent = originalText;
+          button.textContent = memberCheckoutRequested ? originalText : "送出會員登記";
         }
       }
 
