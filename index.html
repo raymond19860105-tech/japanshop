@@ -6,7 +6,7 @@
     <title>遛遛日本小舖 | 日本選物與代購</title>
     <meta
       name="description"
-      content="遛遛日本小舖精選日本零食、茶點、藥妝保養與生活器物，商品內容由管理後台即時同步。"
+      content="遛遛日本小舖精選日本零食、茶點、藥妝保養與生活器物，提供日本現貨與代購選物。"
     />
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <style>
@@ -435,7 +435,6 @@
         <div class="header-actions desktop-only">
           <a class="join-link" id="desktopPromo" href="#join">🎉 日本現貨與代購上新</a>
           <a href="#member">會員</a>
-          <a href="https://raymond19860105-tech.github.io/japanshop-admin/">後台</a>
           <button class="icon-button" aria-label="購物車" title="購物車">
             <svg class="icon" viewBox="0 0 24 24"><path d="M6 6h15l-1.8 9H8L6 3H3" /><path d="M8 21a1 1 0 1 0 0-2 1 1 0 0 0 0 2ZM18 21a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z" /></svg>
           </button>
@@ -445,9 +444,6 @@
         </button>
         <a class="mobile-only icon-button" href="#member" aria-label="會員" title="會員">
           <svg class="icon" viewBox="0 0 24 24"><path d="M20 21a8 8 0 0 0-16 0" /><path d="M12 13a5 5 0 1 0 0-10 5 5 0 0 0 0 10Z" /></svg>
-        </a>
-        <a class="mobile-only icon-button" href="https://raymond19860105-tech.github.io/japanshop-admin/" aria-label="後台" title="後台">
-          <svg class="icon" viewBox="0 0 24 24"><path d="M12 3v18M3 12h18" /></svg>
         </a>
       </div>
       <div class="mobile-promo">
@@ -466,7 +462,6 @@
         <a href="#care">代購服務</a>
         <a href="#detail">商品詳情</a>
         <a href="#member">會員專區</a>
-        <a href="https://raymond19860105-tech.github.io/japanshop-admin/">後台管理</a>
       </nav>
     </aside>
     <div class="backdrop" id="backdrop"></div>
@@ -522,7 +517,7 @@
         <div class="member-copy">
           <p class="eyebrow">MEMBER</p>
           <h2>加入會員，留下你的日本選物清單</h2>
-          <p>會員資料會同步到後台，方便後續通知補貨、代購與出貨資訊。</p>
+          <p>會員資料送出後，方便後續通知補貨、代購與出貨資訊。</p>
         </div>
         <form class="member-form" id="memberForm">
           <label>
@@ -596,7 +591,7 @@
             <div class="shop-cta" id="join">
               <strong>想找日本代購？</strong>
               <p>告訴我們想找的零食、藥妝或生活小物，遛遛日本小舖會整理下一批補貨清單。</p>
-              <a class="pill-button" href="https://raymond19860105-tech.github.io/japanshop-admin/">後台管理</a>
+              <a class="pill-button" href="#member">加入會員</a>
             </div>
             <p class="safety-note">＊ 為了確保付款安全，請勿透過網站或應用程式以外的方式匯款或交易。</p>
           </article>
@@ -616,7 +611,7 @@
         <div class="footer-col"><h3>選購與了解產品</h3><a href="#products">全部分類</a><a href="#topics">主題</a><a href="#care">代購服務</a></div>
         <div class="footer-col"><h3>常見問題</h3><a href="#join">日本現貨說明</a><a href="#join">付款方式</a><a href="#join">物流配送</a><a href="#join">售後服務</a></div>
         <div class="footer-col"><h3>關於遛遛日本小舖</h3><a href="#join">選物理念</a><a href="#join">服務條款</a><a href="#join">聯繫客服</a></div>
-        <div class="footer-col"><h3>管理</h3><a href="https://raymond19860105-tech.github.io/japanshop-admin/">後台登入</a></div>
+        <div class="footer-col"><h3>會員服務</h3><a href="#member">加入會員</a><a href="#join">補貨通知</a><a href="#care">代購需求</a></div>
       </div>
       <div class="copyright">Copyright © 2026 遛遛日本小舖 All rights reserved.</div>
     </footer>
@@ -658,7 +653,7 @@
 
       async function boot() {
         if (!configured) {
-          showWarning("尚未設定 Supabase URL / anon key。請先確認前台與後台的 Supabase 設定。");
+          showWarning("網站資料尚未完成連線設定，請稍後再試。");
           renderSettings(defaultSettings);
           renderEmptyProducts();
           return;
@@ -724,18 +719,18 @@
       }
 
       function renderEmptyProducts() {
-        const empty = `<div class="placeholder">尚無商品。請到後台新增商品，或按「匯入範例資料」。</div>`;
+        const empty = `<div class="placeholder">商品準備中，請稍後再回來逛逛。</div>`;
         document.getElementById("newProductsGrid").innerHTML = empty;
         document.getElementById("recommendedProductsGrid").innerHTML = empty;
         document.getElementById("galleryMain").innerHTML = empty;
         document.getElementById("detailName").textContent = "尚無商品";
         document.getElementById("detailOldPrice").textContent = "";
         document.getElementById("detailSalePrice").textContent = "";
-        document.getElementById("detailCategory").textContent = "請先到後台管理";
+        document.getElementById("detailCategory").textContent = "商品準備中";
         document.getElementById("detailKind").textContent = "商品";
         document.getElementById("detailSku").textContent = "";
         document.getElementById("detailTags").innerHTML = "";
-        document.getElementById("detailBullets").innerHTML = "<li>登入後台後新增商品，前台會自動讀取 Supabase 資料。</li>";
+        document.getElementById("detailBullets").innerHTML = "<li>新品整理中，歡迎加入會員接收補貨通知。</li>";
         document.getElementById("detailOffers").innerHTML = "";
         document.getElementById("detailThumbs").innerHTML = "";
       }
